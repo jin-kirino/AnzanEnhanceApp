@@ -48,11 +48,15 @@ struct ContentView: View {
                 .alert("数字を入力してください", isPresented: $showAlert) {
                     Button("OK") { return}
                 }// alert
+                // 監視対象: isShowSheet
                 .onChange(of: isShowSheet) { value in
-                    firstNumber = Int.random(in: 1...9)
-                    secondNumber = Int.random(in: 1...9)
-                    inputNumber = ""
-                }
+                    // falseのタイミングでランダム＆空欄
+                    if value == false {
+                        firstNumber = Int.random(in: 1...9)
+                        secondNumber = Int.random(in: 1...9)
+                        inputNumber = ""
+                    }// if
+                }// onChange
             }// VStack
         }// ZStack
     }// body
