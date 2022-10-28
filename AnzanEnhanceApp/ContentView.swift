@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var firstNumber: Int = Int.random(in: 1...9)
-    @State var secondNumber: Int = Int.random(in: 1...9)
-    @State var inputNumber: String = ""
-    @State var isShowSheet: Bool = false
-    @State var showAlert: Bool = false
+    @State private var firstNumber: Int = Int.random(in: 1...9)
+    @State private var secondNumber: Int = Int.random(in: 1...9)
+    @State private var inputNumber: String = ""
+    @State private var isShowSheet: Bool = false
+    @State private var showAlert: Bool = false
 
     var body: some View {
         ZStack {
@@ -48,11 +48,11 @@ struct ContentView: View {
                 .alert("数字を入力してください", isPresented: $showAlert) {
                     Button("OK") { return}
                 }// alert
-                .onAppear(perform: {
+                .onChange(of: isShowSheet) { value in
                     firstNumber = Int.random(in: 1...9)
                     secondNumber = Int.random(in: 1...9)
                     inputNumber = ""
-                })
+                }
             }// VStack
         }// ZStack
     }// body

@@ -10,14 +10,14 @@ import AVFoundation
 
 class SoundPlayer: NSObject {
     // correctのデータを読み込み
-    let correctData = NSDataAsset(name: "correct")!.data
+    private let correctData = NSDataAsset(name: "correct")!.data
     // correct用のプレイヤーの変数
     // AVAudioPlayer→音源ファイルを再生できるようにする機能
-    var correctPlayer: AVAudioPlayer!
+    private var correctPlayer: AVAudioPlayer!
     // incorrectのデータを読み込み
-    let incorrectData = NSDataAsset(name: "incorrect")!.data
+    private let incorrectData = NSDataAsset(name: "incorrect")!.data
     // incorrect用のプレイヤーの変数
-    var incorrectPlayer: AVAudioPlayer!
+    private var incorrectPlayer: AVAudioPlayer!
 
     // 正解の音
     func correctPlay() {

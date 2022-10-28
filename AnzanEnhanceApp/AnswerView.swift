@@ -9,12 +9,12 @@ import SwiftUI
 
 struct AnswerView: View {
 
-    @State var result: Int = 0
-    @State var judgment: String = ""
+    @State private var result: Int = 0
+    @State private var judgment: String = ""
     let firstNumber: Int
     let secondNumber: Int
     let inputNumber: Int
-    let soundPlayer = SoundPlayer()
+    private let soundPlayer = SoundPlayer()
 
     var body: some View {
         ZStack {
