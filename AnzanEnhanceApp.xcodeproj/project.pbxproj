@@ -11,6 +11,9 @@
 		FFE40C08290A5D8A00FA7B95 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE40C07290A5D8A00FA7B95 /* ContentView.swift */; };
 		FFE40C0A290A5D8D00FA7B95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFE40C09290A5D8D00FA7B95 /* Assets.xcassets */; };
 		FFE40C0D290A5D8D00FA7B95 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFE40C0C290A5D8D00FA7B95 /* Preview Assets.xcassets */; };
+		FFE40C15290A67C800FA7B95 /* AnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE40C14290A67C800FA7B95 /* AnswerView.swift */; };
+		FFE40C17290A6C8400FA7B95 /* BackgoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE40C16290A6C8400FA7B95 /* BackgoundView.swift */; };
+		FFE40C19290C139C00FA7B95 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE40C18290C139C00FA7B95 /* SoundPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,9 @@
 		FFE40C07290A5D8A00FA7B95 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FFE40C09290A5D8D00FA7B95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFE40C0C290A5D8D00FA7B95 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FFE40C14290A67C800FA7B95 /* AnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerView.swift; sourceTree = "<group>"; };
+		FFE40C16290A6C8400FA7B95 /* BackgoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgoundView.swift; sourceTree = "<group>"; };
+		FFE40C18290C139C00FA7B95 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +59,9 @@
 			children = (
 				FFE40C05290A5D8A00FA7B95 /* AnzanEnhanceAppApp.swift */,
 				FFE40C07290A5D8A00FA7B95 /* ContentView.swift */,
+				FFE40C18290C139C00FA7B95 /* SoundPlayer.swift */,
+				FFE40C16290A6C8400FA7B95 /* BackgoundView.swift */,
+				FFE40C14290A67C800FA7B95 /* AnswerView.swift */,
 				FFE40C09290A5D8D00FA7B95 /* Assets.xcassets */,
 				FFE40C0B290A5D8D00FA7B95 /* Preview Content */,
 			);
@@ -160,6 +169,9 @@
 			files = (
 				FFE40C08290A5D8A00FA7B95 /* ContentView.swift in Sources */,
 				FFE40C06290A5D8A00FA7B95 /* AnzanEnhanceAppApp.swift in Sources */,
+				FFE40C19290C139C00FA7B95 /* SoundPlayer.swift in Sources */,
+				FFE40C15290A67C800FA7B95 /* AnswerView.swift in Sources */,
+				FFE40C17290A6C8400FA7B95 /* BackgoundView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
