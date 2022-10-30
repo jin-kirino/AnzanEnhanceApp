@@ -13,6 +13,7 @@ struct ContentView: View {
     @State private var inputNumber: String = ""
     @State private var isShowSheet: Bool = false
     @State private var showAlert: Bool = false
+    @State private var operatorModel: OperatorModel = .start
 
     var body: some View {
         ZStack {
@@ -21,7 +22,7 @@ struct ContentView: View {
             VStack {
                 HStack {
                     Spacer()
-                    Text("\(firstNumber) + \(secondNumber) =")
+                    Text("\(firstNumber) \(operatorModel.operationSign) \(secondNumber) =")
                         .font(.largeTitle)
                     TextField("答えは？", text: $inputNumber)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -43,7 +44,7 @@ struct ContentView: View {
                         .background(Color.white.opacity(0.7))
                 }// Button
                 .sheet(isPresented: $isShowSheet) {
-                    AnswerView(firstNumber: firstNumber, secondNumber: secondNumber, inputNumber: Int(inputNumber)!)
+                    AnswerView(firstNumber: firstNumber, secondNumber: secondNumber, inputNumber: Int(inputNumber)!, operatorModel: operatorModel)
                 }// sheet
                 .alert("数字を入力してください", isPresented: $showAlert) {
                     Button("OK") { return}
@@ -55,6 +56,7 @@ struct ContentView: View {
                         firstNumber = Int.random(in: 1...9)
                         secondNumber = Int.random(in: 1...9)
                         inputNumber = ""
+                        operatorModel.createOperator()
                     }// if
                 }// onChange
             }// VStack
