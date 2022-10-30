@@ -9,11 +9,11 @@ import SwiftUI
 
 struct AnswerView: View {
 
-    @State private var result: Int = 0
+    @State private var result: Double = 0.0
     @State private var judgment: String = ""
     let firstNumber: Int
     let secondNumber: Int
-    let inputNumber: Int
+    let inputNumber: Double
     let operatorModel: OperatorModel
     private let soundPlayer = SoundPlayer()
 
@@ -21,9 +21,13 @@ struct AnswerView: View {
         ZStack {
             BackgoundView(imageName: "bunbougu_kokuban")
             VStack {
+                let newInputNumber = floor(inputNumber * 100) / 100
+                let _ = print("newInputNumber→\(newInputNumber)")
+//                let newResult = floor(result * 100) / 100
+//                let _ = print("newResult→\(newResult)")
                 Text("""
-                    \(firstNumber) \(operatorModel.operationSign) \(secondNumber) = \(inputNumber)
-                    答えは\(result)
+                    \(firstNumber) \(operatorModel.operationSign) \(secondNumber) = \(newInputNumber)
+                    答えは\(floor(result * 100) / 100)
                     \(judgment)
                     """)
                 .font(.largeTitle)
@@ -32,7 +36,7 @@ struct AnswerView: View {
             }// VStack
         }// ZStack
         .onAppear(perform: {
-            result = Int(operatorModel.operation(firstNumber: firstNumber, secondNumber: secondNumber))
+            result = operatorModel.operation(firstNumber: firstNumber, secondNumber: secondNumber)
             if result == inputNumber {
                 judgment = "正解"
                 soundPlayer.correctPlay()
@@ -46,6 +50,6 @@ struct AnswerView: View {
 
 struct AnswerView_Previews: PreviewProvider {
     static var previews: some View {
-        AnswerView(firstNumber: 0, secondNumber: 0, inputNumber: 0, operatorModel: .start)
+        AnswerView(firstNumber: 0, secondNumber: 0, inputNumber: 0, operatorModel: .addition)
     }
 }
