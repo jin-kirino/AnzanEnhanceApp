@@ -11,25 +11,57 @@ import Foundation
 // ランダムで四則演算子を生成する
 
 enum OperatorModel {
-    case number(Int)
-    // indirect→回帰的enum
-    indirect case addition(OperatorModel, OperatorModel)
-    indirect case subtraction(OperatorModel, OperatorModel)
-    indirect case multiplication(OperatorModel, OperatorModel)
-    indirect case division(OperatorModel, OperatorModel)
-}
+    // 4つの計算パターン
+    case start
+    case addition
+    case subtraction
+    case multiplication
+    case division
 
-func evalute(_ expression: OperatorModel) -> Double {
-    switch expression {
-    case let .number(value):
-        return Double(value)
-    case let .addition(left, right):
-        return evalute(left) + evalute(right)
-    case let .subtraction(left, right):
-        return evalute(left) - evalute(right)
-    case let .multiplication(left, right):
-        return evalute(left) * evalute(right)
-    case let .division(left, right):
-        return evalute(left) / evalute(right)
+    // 表示させる記号
+    var operationSign: String {
+        switch self {
+        case .start:
+            return ""
+        case .addition:
+            return "+"
+        case .subtraction:
+            return "-"
+        case .multiplication:
+            return "×"
+        case .division:
+            return "÷"
+        }
     }
-}
+
+    mutating func createOperator() {
+        // 起動画面
+        var newOparator: OperatorModel = .start
+        // 演算子の種類を配列に格納
+        let oparatorPattern: [OperatorModel] = [.addition, .subtraction, .multiplication, .division]
+
+        repeat {
+            // ランダムに抽出
+            newOparator = oparatorPattern.randomElement()!
+            // 前回と同じなら再度ランダム
+        } while self == newOparator
+        // 違うならselfに返す
+        self = newOparator
+    }// createOperator()
+
+     func operation(firstNumber: Int, secondNumber: Int) -> Double {
+        var _: Double = 0.0
+        switch self {
+        case .start:
+            return 0.0
+        case .addition:
+            return Double(firstNumber) + Double(secondNumber)
+        case .subtraction:
+            return Double(firstNumber) - Double(secondNumber)
+        case .multiplication:
+            return Double(firstNumber) * Double(secondNumber)
+        case .division:
+            return Double(firstNumber) / Double(secondNumber)
+        }
+    }
+}// OperatorModel
