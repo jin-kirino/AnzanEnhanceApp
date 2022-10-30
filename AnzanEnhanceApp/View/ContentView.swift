@@ -13,7 +13,7 @@ struct ContentView: View {
     @State private var inputNumber: String = ""
     @State private var isShowSheet: Bool = false
     @State private var showAlert: Bool = false
-    @State private var operatorModel: OperatorModel = .start
+    @State private var operatorModel: OperatorModel = .addition
 
     var body: some View {
         ZStack {
@@ -32,7 +32,7 @@ struct ContentView: View {
                 .padding()
                 .background(Color.white.opacity(0.7))
                 Button {
-                    if Int(inputNumber) != nil {
+                    if Double(inputNumber) != nil {
                         isShowSheet.toggle()
                     } else {
                         showAlert.toggle()
@@ -44,7 +44,7 @@ struct ContentView: View {
                         .background(Color.white.opacity(0.7))
                 }// Button
                 .sheet(isPresented: $isShowSheet) {
-                    AnswerView(firstNumber: firstNumber, secondNumber: secondNumber, inputNumber: Int(inputNumber)!, operatorModel: operatorModel)
+                    AnswerView(firstNumber: firstNumber, secondNumber: secondNumber, inputNumber: Double(inputNumber)!, operatorModel: operatorModel)
                 }// sheet
                 .alert("数字を入力してください", isPresented: $showAlert) {
                     Button("OK") { return}
@@ -59,6 +59,7 @@ struct ContentView: View {
                         operatorModel.createOperator()
                     }// if
                 }// onChange
+                .onAppear()
             }// VStack
         }// ZStack
     }// body
