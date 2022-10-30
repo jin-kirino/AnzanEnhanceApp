@@ -14,6 +14,7 @@
 		FFE40C15290A67C800FA7B95 /* AnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE40C14290A67C800FA7B95 /* AnswerView.swift */; };
 		FFE40C17290A6C8400FA7B95 /* BackgoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE40C16290A6C8400FA7B95 /* BackgoundView.swift */; };
 		FFE40C19290C139C00FA7B95 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE40C18290C139C00FA7B95 /* SoundPlayer.swift */; };
+		FFE40C1D290C8E0E00FA7B95 /* OperatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE40C1C290C8E0E00FA7B95 /* OperatorModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		FFE40C14290A67C800FA7B95 /* AnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerView.swift; sourceTree = "<group>"; };
 		FFE40C16290A6C8400FA7B95 /* BackgoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgoundView.swift; sourceTree = "<group>"; };
 		FFE40C18290C139C00FA7B95 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
+		FFE40C1C290C8E0E00FA7B95 /* OperatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +60,9 @@
 			isa = PBXGroup;
 			children = (
 				FFE40C05290A5D8A00FA7B95 /* AnzanEnhanceAppApp.swift */,
-				FFE40C07290A5D8A00FA7B95 /* ContentView.swift */,
 				FFE40C18290C139C00FA7B95 /* SoundPlayer.swift */,
-				FFE40C16290A6C8400FA7B95 /* BackgoundView.swift */,
-				FFE40C14290A67C800FA7B95 /* AnswerView.swift */,
+				FFE40C1B290C8DE300FA7B95 /* View */,
+				FFE40C1A290C8DD100FA7B95 /* Model */,
 				FFE40C09290A5D8D00FA7B95 /* Assets.xcassets */,
 				FFE40C0B290A5D8D00FA7B95 /* Preview Content */,
 			);
@@ -74,6 +75,24 @@
 				FFE40C0C290A5D8D00FA7B95 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FFE40C1A290C8DD100FA7B95 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FFE40C1C290C8E0E00FA7B95 /* OperatorModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FFE40C1B290C8DE300FA7B95 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FFE40C07290A5D8A00FA7B95 /* ContentView.swift */,
+				FFE40C16290A6C8400FA7B95 /* BackgoundView.swift */,
+				FFE40C14290A67C800FA7B95 /* AnswerView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFE40C08290A5D8A00FA7B95 /* ContentView.swift in Sources */,
+				FFE40C1D290C8E0E00FA7B95 /* OperatorModel.swift in Sources */,
 				FFE40C06290A5D8A00FA7B95 /* AnzanEnhanceAppApp.swift in Sources */,
 				FFE40C19290C139C00FA7B95 /* SoundPlayer.swift in Sources */,
 				FFE40C15290A67C800FA7B95 /* AnswerView.swift in Sources */,
