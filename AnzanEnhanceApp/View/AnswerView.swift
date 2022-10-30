@@ -14,6 +14,7 @@ struct AnswerView: View {
     let firstNumber: Int
     let secondNumber: Int
     let inputNumber: Int
+    let operatorModel: OperatorModel
     private let soundPlayer = SoundPlayer()
 
     var body: some View {
@@ -21,7 +22,7 @@ struct AnswerView: View {
             BackgoundView(imageName: "bunbougu_kokuban")
             VStack {
                 Text("""
-                    \(firstNumber) + \(secondNumber) = \(firstNumber+secondNumber)
+                    \(firstNumber) \(operatorModel.operationSign) \(secondNumber) = \(operatorModel.operation(firstNumber: firstNumber, secondNumber: secondNumber))
                     答えは\(inputNumber)
                     \(judgment)
                     """)
@@ -31,7 +32,7 @@ struct AnswerView: View {
             }// VStack
         }// ZStack
         .onAppear(perform: {
-            result = firstNumber + secondNumber
+            result = Int(operatorModel.operation(firstNumber: firstNumber, secondNumber: secondNumber))
             if result == inputNumber {
                 judgment = "正解"
                 soundPlayer.correctPlay()
@@ -45,6 +46,6 @@ struct AnswerView: View {
 
 struct AnswerView_Previews: PreviewProvider {
     static var previews: some View {
-        AnswerView(firstNumber: 0, secondNumber: 0, inputNumber: 0)
+        AnswerView(firstNumber: 0, secondNumber: 0, inputNumber: 0, operatorModel: .start)
     }
 }
