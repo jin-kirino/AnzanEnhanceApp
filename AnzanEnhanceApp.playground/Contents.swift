@@ -226,3 +226,8 @@ enum Keisan {
         }
     }
 }
+
+let aaa = 3.344555
+let www = floor(aaa * 100) / 100
+print(aaa)
+print(www)
