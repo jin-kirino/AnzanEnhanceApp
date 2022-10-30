@@ -12,7 +12,7 @@ import Foundation
 
 enum OperatorModel {
     // 4つの計算パターン
-    case start
+    
     case addition
     case subtraction
     case multiplication
@@ -21,8 +21,6 @@ enum OperatorModel {
     // 表示させる記号
     var operationSign: String {
         switch self {
-        case .start:
-            return ""
         case .addition:
             return "+"
         case .subtraction:
@@ -36,7 +34,7 @@ enum OperatorModel {
 
     mutating func createOperator() {
         // 起動画面
-        var newOparator: OperatorModel = .start
+        var newOparator: OperatorModel = .addition
         // 演算子の種類を配列に格納
         let oparatorPattern: [OperatorModel] = [.addition, .subtraction, .multiplication, .division]
 
@@ -52,8 +50,6 @@ enum OperatorModel {
      func operation(firstNumber: Int, secondNumber: Int) -> Double {
         var _: Double = 0.0
         switch self {
-        case .start:
-            return 0.0
         case .addition:
             return Double(firstNumber) + Double(secondNumber)
         case .subtraction:
