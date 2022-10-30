@@ -1,6 +1,6 @@
 import UIKit
 
-//enum Color {
+// enum Color {
 //    case clear
 //    case red
 //    case blue
@@ -15,20 +15,19 @@ import UIKit
 //    init(color: Color) {
 //        self = color
 //    }
-//}// Color
+// }// Color
 //
-//// 実行
-//var c = Color.red
-//print(c)
-//print(type(of: c))
+// 実行
+// var c = Color.red
+// print(c)
+// print(type(of: c))
 //
-//// Color.greenが正式
-//var d: Color = .green
-//// 自分自身を指定したイニシャライザ
-//var e = Color()
-//// 2つ目のイニシャライザ
-//var f = Color(color: .green)
-
+// Color.greenが正式
+// var d: Color = .green
+// 自分自身を指定したイニシャライザ
+// var e = Color()
+// 2つ目のイニシャライザ
+// var f = Color(color: .green)
 
 // メンバには値(raw value:実体値)を付与できる（型名の後ろに「:型名」で指定する
 
@@ -39,14 +38,13 @@ enum Num: Int {
 }
 
 // Num型の変数nをインスタンス化
-var n: Num = .three
+ var number: Num = .three
 // 実体値を「.rawValue」で出す
-n.rawValue
-
+ number.rawValue
 
 enum Animal {
     case dog, cat, horse, fox
-    
+
     func info() {
         if self == .dog {
             print("犬")
@@ -60,36 +58,35 @@ enum Animal {
     }
 }
 
-var a = Animal.dog
-a = .fox
+var animal = Animal.dog
+animal = .fox
 
 enum Color: Int {
     case clear = 0
     case red = 1
     case blue = 2
     case green = 3
-    
+
     init() {
         self = .clear
     }
-    
+
     init(color: Color) {
         self = color
     }
 }
 
-var c = Color.red
-c.rawValue
+var color = Color.red
+color.rawValue
 
-if c.rawValue == 1 {
+if color.rawValue == 1 {
     print("赤")
 } else {
     print("赤じゃない")
 }
 
-
 enum EInt: Int {
-    case zero,one, two, three
+    case zero, one, two, three
     case ten = 10
     case tenPlusOne
 }
@@ -102,13 +99,12 @@ EInt.ten.rawValue
 // そこからまた１ずつ増やすには並べて記述する
 EInt.tenPlusOne.rawValue
 
-
 enum EString: String {
     case tokyo, osaka, kyoto
 }
 EString.tokyo.rawValue
 
-//---------------------------------------------
+// ---------------------------------------------
 enum ArithmericExpression {
     // "case"+case名+(型名)
     case number(Int)
@@ -137,7 +133,7 @@ func evaluate(_ expression: ArithmericExpression) -> Int {
 print(evaluate(sum))
 print(evaluate(product))
 
-//------------------------------------------------
+// ------------------------------------------------
 
  enum ArithmericExpression2 {
     case number(Double)
@@ -178,3 +174,58 @@ print(evaluate2(waru))
 
 let floorNum = floor(evaluate2(waru))/100
 print(floorNum)
+
+// ----------------------------------
+
+// 一旦保留
+// enum OperatorModel {
+//    case number(Int)
+//    // indirect→回帰的enum
+//    indirect case addition(OperatorModel, OperatorModel)
+//    indirect case subtraction(OperatorModel, OperatorModel)
+//    indirect case multiplication(OperatorModel, OperatorModel)
+//    indirect case division(OperatorModel, OperatorModel)
+// }
+//
+// func evalute(_ expression: OperatorModel) -> Double {
+//    switch expression {
+//    case let .number(value):
+//        return Double(value)
+//    case let .addition(left, right):
+//        return evalute(left) + evalute(right)
+//    case let .subtraction(left, right):
+//        return evalute(left) - evalute(right)
+//    case let .multiplication(left, right):
+//        return evalute(left) * evalute(right)
+//    case let .division(left, right):
+//        return evalute(left) / evalute(right)
+//    }
+// }
+
+enum Keisan {
+    // 4つの計算パターン
+    case start
+    case addition
+    case subtraction
+    case multiplication
+    case division
+
+    // 表示させる記号
+    var kigo: String {
+        switch self {
+        case .start:
+            return ""
+        case .addition:
+            return "+"
+        case .subtraction:
+            return "-"
+        case .multiplication:
+            return "×"
+        case .division:
+            return "÷"
+        }
+    }
+
+    func dentaku(first: Int, second: Int) -> Double {
+
+}
