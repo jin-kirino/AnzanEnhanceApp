@@ -225,7 +225,4 @@ enum Keisan {
             return "÷"
         }
     }
-
-    func dentaku(first: Int, second: Int) -> Double {
-
 }

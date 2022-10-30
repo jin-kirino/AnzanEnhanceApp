@@ -22,8 +22,8 @@ struct AnswerView: View {
             BackgoundView(imageName: "bunbougu_kokuban")
             VStack {
                 Text("""
-                    \(firstNumber) \(operatorModel.operationSign) \(secondNumber) = \(operatorModel.operation(firstNumber: firstNumber, secondNumber: secondNumber))
-                    答えは\(inputNumber)
+                    \(firstNumber) \(operatorModel.operationSign) \(secondNumber) = \(inputNumber)
+                    答えは\(result)
                     \(judgment)
                     """)
                 .font(.largeTitle)
