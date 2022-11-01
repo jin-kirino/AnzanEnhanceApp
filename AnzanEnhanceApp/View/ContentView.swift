@@ -44,7 +44,10 @@ struct ContentView: View {
                         .background(Color.white.opacity(0.7))
                 }// Button
                 .sheet(isPresented: $isShowSheet) {
-                    AnswerView(firstNumber: firstNumber, secondNumber: secondNumber, inputNumber: Double(inputNumber)!, operatorModel: operatorModel)
+                    AnswerView(firstNumber: firstNumber,
+                               secondNumber: secondNumber,
+                               inputNumber: Double(inputNumber)!,
+                               operatorModel: operatorModel)
                 }// sheet
                 .alert("数字を入力してください", isPresented: $showAlert) {
                     Button("OK") { return}
