@@ -22,12 +22,12 @@ struct AnswerView: View {
             BackgoundView(imageName: "bunbougu_kokuban")
             VStack {
                 let newInputNumber = floor(inputNumber * 100) / 100
-                let _ = print("newInputNumber→\(newInputNumber)")
-//                let newResult = floor(result * 100) / 100
-//                let _ = print("newResult→\(newResult)")
+                let newResult = floor(result * 100) / 100
+                let _ = print("newInputNumber→\(String(format: "%.2f", newInputNumber))")
+                let _ = print("newResult→\(String(format: "%.2f", newResult))")
                 Text("""
-                    \(firstNumber) \(operatorModel.operationSign) \(secondNumber) = \(newInputNumber)
-                    答えは\(floor(result * 100) / 100)
+                    \(firstNumber) \(operatorModel.operationSign) \(secondNumber) = \(String(format: "%.2f", newInputNumber))
+                    答えは\(String(format: "%.2f", newResult))
                     \(judgment)
                     """)
                 .font(.largeTitle)
