@@ -12,7 +12,6 @@ import Foundation
 
 enum OperatorModel {
     // 4つの計算パターン
-
     case addition
     case subtraction
     case multiplication
