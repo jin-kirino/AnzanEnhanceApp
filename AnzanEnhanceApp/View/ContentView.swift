@@ -14,7 +14,6 @@ struct ContentView: View {
     @State private var isShowSheet: Bool = false
     @State private var showAlert: Bool = false
     @State private var operatorModel: OperatorModel = .addition
-    @State private var checkModel: CheckModel = .correct
 
     var body: some View {
         ZStack {
@@ -48,8 +47,7 @@ struct ContentView: View {
                     AnswerView(firstNumber: firstNumber,
                                secondNumber: secondNumber,
                                inputNumber: Double(inputNumber)!,
-                               operatorModel: operatorModel,
-                               checkModel: checkModel)
+                               operatorModel: operatorModel)
                 }// sheet
                 .alert("数字を入力してください", isPresented: $showAlert) {
                     Button("OK") { return}

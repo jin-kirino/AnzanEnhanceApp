@@ -5,11 +5,10 @@
 //  Created by 神　樹里乃 on 2022/10/29.
 //
 
-import Foundation
+import SwiftUI
 
 // 四則演算子を管理する
 // ランダムで四則演算子を生成する
-
 enum OperatorModel {
     // 4つの計算パターン
     case addition
@@ -60,5 +59,16 @@ enum OperatorModel {
             print("value:\(floor(value * 100) / 100)")
             return floor(value * 100) / 100
         }
-    }
+    }// operation
+    // 正誤チェック機能
+    // operationメソッドの値と入力された値を比較する→メソッドを読んでくる
+
+    func checkAnswer(inputNumber: Double) -> Bool {
+        let operation = operation(firstNumber: Int.random(in: 1...9), secondNumber: Int.random(in: 1...9))
+        if operation == inputNumber {
+            return true
+        } else {
+            return false
+        }
+    }// checkAnswer
 }// OperatorModel
