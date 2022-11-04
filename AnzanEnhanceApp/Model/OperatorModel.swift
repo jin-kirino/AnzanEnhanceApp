@@ -47,7 +47,7 @@ enum OperatorModel {
     }// createOperator()
 
      func operation(firstNumber: Int, secondNumber: Int) -> Double {
-        var _: Double = 0.0
+        var aaa: Double = 0.0
         switch self {
         case .addition:
             return Double(firstNumber) + Double(secondNumber)
@@ -56,7 +56,9 @@ enum OperatorModel {
         case .multiplication:
             return Double(firstNumber) * Double(secondNumber)
         case .division:
-            return Double(firstNumber) / Double(secondNumber)
+            aaa = Double(firstNumber) / Double(secondNumber)
+            print("aaa:\(floor(aaa * 100) / 100)")
+            return floor(aaa * 100) / 100
         }
     }
 }// OperatorModel
