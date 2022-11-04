@@ -11,6 +11,7 @@ struct AnswerView: View {
 
     @State private var result: Double = 0.0
     @State private var judgment: String = ""
+    @State private var kekka: String = ""
     let firstNumber: Int
     let secondNumber: Int
     let inputNumber: Double
@@ -21,15 +22,12 @@ struct AnswerView: View {
         ZStack {
             BackgoundView(imageName: "bunbougu_kokuban")
             VStack {
-                let newInputNumber = floor(inputNumber * 100) / 100
                 let newResult = floor(result * 100) / 100
-                let _ = print("newInputNumber→\(String(format: "%.2f", newInputNumber))")
-                let _ = print("newResult→\(String(format: "%.2f", newResult))")
                 Text("""
-                    \(firstNumber) \(operatorModel.operationSign) \(secondNumber) = \(String(format: "%.2f", newInputNumber))
+                    \(kekka)
                     答えは\(String(format: "%.2f", newResult))
                     \(judgment)
-                    """)
+                """)
                 .font(.largeTitle)
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)
@@ -44,12 +42,15 @@ struct AnswerView: View {
                 judgment = "不正解"
                 soundPlayer.incorrectPlay()
             }// if-else
+            let newInputNumber = floor(inputNumber * 100) / 100
+            kekka = "\(firstNumber) \(operatorModel.operationSign)"
+            kekka.append(" \(secondNumber) = \(String(format: "%.2f", newInputNumber))")
         })// onAppear
     }// body
 }// ContentView
 
 struct AnswerView_Previews: PreviewProvider {
     static var previews: some View {
-        AnswerView(firstNumber: 0, secondNumber: 0, inputNumber: 0, operatorModel: .addition)
+        AnswerView(firstNumber: 0, secondNumber: 0, inputNumber: 0.0, operatorModel: .addition)
     }
 }
