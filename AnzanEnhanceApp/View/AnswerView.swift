@@ -19,10 +19,11 @@ struct AnswerView: View {
     private let soundPlayer = SoundPlayer()
 
     var body: some View {
+        let newInputNumber = floor(inputNumber * 100) / 100
+        let newResult = floor(result * 100) / 100
         ZStack {
             BackgoundView(imageName: "bunbougu_kokuban")
             VStack {
-                let newResult = floor(result * 100) / 100
                 Text("""
                     \(basicArithmeticOperations)
                     答えは\(String(format: "%.2f", newResult))
@@ -42,7 +43,8 @@ struct AnswerView: View {
                 judgment = "不正解"
                 soundPlayer.incorrectPlay()
             }// if-else
-            let newInputNumber = floor(inputNumber * 100) / 100
+            print("result:\(result)")
+            print("inputNumber:\(inputNumber)")
             basicArithmeticOperations = "\(firstNumber) \(operatorModel.operationSign)"
             basicArithmeticOperations.append(" \(secondNumber) = \(String(format: "%.2f", newInputNumber))")
         })// onAppear
