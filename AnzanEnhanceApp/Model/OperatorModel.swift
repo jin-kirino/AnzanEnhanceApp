@@ -57,7 +57,7 @@ enum OperatorModel {
             return Double(firstNumber) * Double(secondNumber)
         case .division:
             value = Double(firstNumber) / Double(secondNumber)
-            print("aaa:\(floor(value * 100) / 100)")
+            print("value:\(floor(value * 100) / 100)")
             return floor(value * 100) / 100
         }
     }

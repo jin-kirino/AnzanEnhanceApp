@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FFC5408B29150ED3008B31AA /* CheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC5408A29150ED3008B31AA /* CheckModel.swift */; };
 		FFE40C06290A5D8A00FA7B95 /* AnzanEnhanceAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE40C05290A5D8A00FA7B95 /* AnzanEnhanceAppApp.swift */; };
 		FFE40C08290A5D8A00FA7B95 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE40C07290A5D8A00FA7B95 /* ContentView.swift */; };
 		FFE40C0A290A5D8D00FA7B95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFE40C09290A5D8D00FA7B95 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FFC5408A29150ED3008B31AA /* CheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckModel.swift; sourceTree = "<group>"; };
 		FFE40C02290A5D8A00FA7B95 /* AnzanEnhanceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnzanEnhanceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFE40C05290A5D8A00FA7B95 /* AnzanEnhanceAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnzanEnhanceAppApp.swift; sourceTree = "<group>"; };
 		FFE40C07290A5D8A00FA7B95 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				FFE40C1C290C8E0E00FA7B95 /* OperatorModel.swift */,
+				FFC5408A29150ED3008B31AA /* CheckModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				FFE40C1D290C8E0E00FA7B95 /* OperatorModel.swift in Sources */,
 				FFE40C06290A5D8A00FA7B95 /* AnzanEnhanceAppApp.swift in Sources */,
 				FFE40C19290C139C00FA7B95 /* SoundPlayer.swift in Sources */,
+				FFC5408B29150ED3008B31AA /* CheckModel.swift in Sources */,
 				FFE40C15290A67C800FA7B95 /* AnswerView.swift in Sources */,
 				FFE40C17290A6C8400FA7B95 /* BackgoundView.swift in Sources */,
 			);

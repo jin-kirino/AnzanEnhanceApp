@@ -16,6 +16,7 @@ struct AnswerView: View {
     let secondNumber: Int
     let inputNumber: Double
     let operatorModel: OperatorModel
+    let checkModel: CheckModel
     private let soundPlayer = SoundPlayer()
 
     var body: some View {
@@ -37,10 +38,10 @@ struct AnswerView: View {
         .onAppear(perform: {
             result = operatorModel.operation(firstNumber: firstNumber, secondNumber: secondNumber)
             if result == inputNumber {
-                judgment = "正解"
+                judgment = checkModel.checkAnswer(result: result, inputNumber: inputNumber)
                 soundPlayer.correctPlay()
             } else {
-                judgment = "不正解"
+                judgment = checkModel.checkAnswer(result: result, inputNumber: inputNumber)
                 soundPlayer.incorrectPlay()
             }// if-else
             print("result:\(result)")
@@ -53,6 +54,6 @@ struct AnswerView: View {
 
 struct AnswerView_Previews: PreviewProvider {
     static var previews: some View {
-        AnswerView(firstNumber: 0, secondNumber: 0, inputNumber: 0.0, operatorModel: .addition)
+        AnswerView(firstNumber: 0, secondNumber: 0, inputNumber: 0.0, operatorModel: .addition, checkModel: .correct)
     }
 }
