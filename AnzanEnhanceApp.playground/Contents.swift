@@ -231,3 +231,17 @@ let aaa = 3.344555
 let www = floor(aaa * 100) / 100
 print(aaa)
 print(www)
+
+var greeting = "こんにちは!"
+greeting.append("swift")
+print(greeting)
+
+greeting += "頑張る"
+print(greeting)
+
+var kekka = "firstNumber"
+kekka.append(" oparatorModel.operationSign")
+kekka.append(" secondNumber")
+kekka.append(" =")
+kekka.append(" newInputNumber")
+print(kekka)
