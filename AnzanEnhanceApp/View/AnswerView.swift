@@ -11,7 +11,7 @@ struct AnswerView: View {
 
     @State private var result: Double = 0.0
     @State private var judgment: String = ""
-    @State private var kekka: String = ""
+    @State private var basicArithmeticOperations: String = ""
     let firstNumber: Int
     let secondNumber: Int
     let inputNumber: Double
@@ -24,7 +24,7 @@ struct AnswerView: View {
             VStack {
                 let newResult = floor(result * 100) / 100
                 Text("""
-                    \(kekka)
+                    \(basicArithmeticOperations)
                     答えは\(String(format: "%.2f", newResult))
                     \(judgment)
                 """)
@@ -43,8 +43,8 @@ struct AnswerView: View {
                 soundPlayer.incorrectPlay()
             }// if-else
             let newInputNumber = floor(inputNumber * 100) / 100
-            kekka = "\(firstNumber) \(operatorModel.operationSign)"
-            kekka.append(" \(secondNumber) = \(String(format: "%.2f", newInputNumber))")
+            basicArithmeticOperations = "\(firstNumber) \(operatorModel.operationSign)"
+            basicArithmeticOperations.append(" \(secondNumber) = \(String(format: "%.2f", newInputNumber))")
         })// onAppear
     }// body
 }// ContentView
