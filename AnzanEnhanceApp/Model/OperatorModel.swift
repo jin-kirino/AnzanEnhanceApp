@@ -45,7 +45,7 @@ enum OperatorModel {
         self = newOparator
     }// createOperator()
 
-     func operation(firstNumber: Int, secondNumber: Int) -> Double {
+    func operation(firstNumber: Int, secondNumber: Int) -> Double {
         var value: Double = 0.0
         switch self {
         case .addition:
@@ -61,10 +61,12 @@ enum OperatorModel {
         }
     }// operation
     // 正誤チェック機能
-    // operationメソッドの値と入力された値を比較する→メソッドを読んでくる
-
+    // ①operationメソッドの値と②入力された値を比較する→メソッドを読んでくる
     func checkAnswer(inputNumber: Double) -> Bool {
-        let operation = operation(firstNumber: Int.random(in: 1...9), secondNumber: Int.random(in: 1...9))
+        let operation = operation(firstNumber: 0,
+                                  secondNumber: 0)
+        print("operation:\(operation)")
+        print("inputNumber:\(inputNumber)")
         if operation == inputNumber {
             return true
         } else {

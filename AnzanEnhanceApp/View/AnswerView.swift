@@ -11,7 +11,7 @@ struct AnswerView: View {
 
     @State private var result: Double = 0.0
     @State private var judgment: String = ""
-    // 画面の黒板の
+    // 画面の黒板に表示させる文字列
     @State private var basicArithmeticOperations: String = ""
     let firstNumber: Int
     let secondNumber: Int
