@@ -18,8 +18,8 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             BackgoundView(imageName: "bunbougu_kokuban")
-
             VStack {
+                let doubleNumber = Double(inputNumber)
                 HStack {
                     Spacer()
                     Text("\(firstNumber) \(operatorModel.rawValue) \(secondNumber) =")
@@ -32,7 +32,7 @@ struct ContentView: View {
                 .padding()
                 .background(Color.white.opacity(0.7))
                 Button {
-                    if Double(inputNumber) != nil {
+                    if doubleNumber != nil {
                         isShowSheet.toggle()
                     } else {
                         showAlert.toggle()
@@ -46,7 +46,7 @@ struct ContentView: View {
                 .sheet(isPresented: $isShowSheet) {
                     AnswerView(firstNumber: firstNumber,
                                secondNumber: secondNumber,
-                               inputNumber: Double(inputNumber)!,
+                               inputNumber: doubleNumber ?? 0.0,
                                operatorModel: operatorModel)
                 }// sheet
                 .alert("数字を入力してください", isPresented: $showAlert) {
