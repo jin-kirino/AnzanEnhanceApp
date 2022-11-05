@@ -42,7 +42,7 @@ enum OperatorModel: CaseIterable {
         } while self == newOparator
         // 違うならselfに返す
         self = newOparator
-    }// createOperator()
+    }// randomOperator()
 
     func operation(firstNumber: Int, secondNumber: Int) -> Double {
         var value: Double = 0.0
