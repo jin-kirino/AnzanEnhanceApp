@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-
 // 四則演算子を管理する
 // ランダムで四則演算子を生成する
 enum OperatorModel {
@@ -16,6 +15,8 @@ enum OperatorModel {
     case multiplication
     case division
 
+    static var aaa = Int.random(in: 1...9)
+    static var bbb = Int.random(in: 1...9)
     // 表示させる記号
     var operationSign: String {
         switch self {
@@ -63,8 +64,8 @@ enum OperatorModel {
     // 正誤チェック機能
     // ①operationメソッドの値と②入力された値を比較する→メソッドを読んでくる
     func checkAnswer(inputNumber: Double) -> Bool {
-        let operation = operation(firstNumber: 0,
-                                  secondNumber: 0)
+        let operation = operation(firstNumber: OperatorModel.aaa,
+                                  secondNumber: OperatorModel.bbb)
         print("operation:\(operation)")
         print("inputNumber:\(inputNumber)")
         if operation == inputNumber {
