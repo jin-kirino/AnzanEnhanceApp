@@ -59,7 +59,7 @@ struct ContentView: View {
                         firstNumber = Int.random(in: 1...9)
                         secondNumber = Int.random(in: 1...9)
                         inputNumber = ""
-                        operatorModel.createOperator()
+                        operatorModel.randomOperator()
                     }// if
                 }// onChange
                 .onAppear()

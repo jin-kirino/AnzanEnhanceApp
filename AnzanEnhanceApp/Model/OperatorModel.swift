@@ -8,7 +8,7 @@
 import SwiftUI
 // 四則演算子を管理する
 // ランダムで四則演算子を生成する
-enum OperatorModel {
+enum OperatorModel: CaseIterable {
     // 4つの計算パターン
     case addition
     case subtraction
@@ -29,11 +29,11 @@ enum OperatorModel {
         }
     }
 
-    mutating func createOperator() {
+    mutating func randomOperator() {
         // 起動画面
         var newOparator: OperatorModel = .addition
         // 演算子の種類を配列に格納
-        let oparatorPattern: [OperatorModel] = [.addition, .subtraction, .multiplication, .division]
+        let oparatorPattern: [OperatorModel] = OperatorModel.allCases
 
         repeat {
             // ランダムに抽出
