@@ -60,7 +60,7 @@ enum OperatorModel {
         }
     }// operation
     // 正誤チェック機能
-    // ①operationメソッドの値と②入力された値を比較する→メソッドを読んでくる
+    // ①計算結果、②入力された値を比較する
     func checkAnswer(value: Double, inputNumber: Double) -> Bool {
         if value == inputNumber {
             return true
