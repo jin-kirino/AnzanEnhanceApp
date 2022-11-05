@@ -8,16 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
-//    @State private var firstNumber: Int = Int.random(in: 1...9)
-//    @State private var secondNumber: Int = Int.random(in: 1...9)
+    @State private var firstNumber: Int = Int.random(in: 1...9)
+    @State private var secondNumber: Int = Int.random(in: 1...9)
     @State private var inputNumber: String = ""
     @State private var isShowSheet: Bool = false
     @State private var showAlert: Bool = false
     @State private var operatorModel: OperatorModel = .addition
 
     var body: some View {
-        var firstNumber = OperatorModel.aaa
-        var secondNumber = OperatorModel.bbb
         ZStack {
             BackgoundView(imageName: "bunbougu_kokuban")
 

@@ -15,8 +15,6 @@ enum OperatorModel {
     case multiplication
     case division
 
-    static var aaa = Int.random(in: 1...9)
-    static var bbb = Int.random(in: 1...9)
     // 表示させる記号
     var operationSign: String {
         switch self {
@@ -63,12 +61,8 @@ enum OperatorModel {
     }// operation
     // 正誤チェック機能
     // ①operationメソッドの値と②入力された値を比較する→メソッドを読んでくる
-    func checkAnswer(inputNumber: Double) -> Bool {
-        let operation = operation(firstNumber: OperatorModel.aaa,
-                                  secondNumber: OperatorModel.bbb)
-        print("operation:\(operation)")
-        print("inputNumber:\(inputNumber)")
-        if operation == inputNumber {
+    func checkAnswer(value: Double, inputNumber: Double) -> Bool {
+        if value == inputNumber {
             return true
         } else {
             return false

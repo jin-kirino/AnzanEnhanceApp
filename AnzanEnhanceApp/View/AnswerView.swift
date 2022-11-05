@@ -38,7 +38,7 @@ struct AnswerView: View {
         .onAppear(perform: {
             result = operatorModel.operation(firstNumber: firstNumber, secondNumber: secondNumber)
             // 正解or不正解
-            if operatorModel.checkAnswer(inputNumber: inputNumber) == true {
+            if operatorModel.checkAnswer(value: result, inputNumber: inputNumber) == true {
                 judgment = "正解"
                 soundPlayer.correctPlay()
             } else {
