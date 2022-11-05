@@ -47,7 +47,7 @@ struct AnswerView: View {
             }// if-else
             print("result:\(result)")
             print("inputNumber:\(inputNumber)")
-            basicArithmeticOperations = "\(firstNumber) \(operatorModel.operationSign)"
+            basicArithmeticOperations = "\(firstNumber) \(operatorModel.rawValue)"
             basicArithmeticOperations.append(" \(secondNumber) = \(String(format: "%.2f", newInputNumber))")
         })// onAppear
     }// body

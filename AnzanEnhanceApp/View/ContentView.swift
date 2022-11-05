@@ -22,7 +22,7 @@ struct ContentView: View {
             VStack {
                 HStack {
                     Spacer()
-                    Text("\(firstNumber) \(operatorModel.operationSign) \(secondNumber) =")
+                    Text("\(firstNumber) \(operatorModel.rawValue) \(secondNumber) =")
                         .font(.largeTitle)
                     TextField("答えは？", text: $inputNumber)
                         .textFieldStyle(RoundedBorderTextFieldStyle())

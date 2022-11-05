@@ -8,26 +8,12 @@
 import SwiftUI
 // 四則演算子を管理する
 // ランダムで四則演算子を生成する
-enum OperatorModel: CaseIterable {
+enum OperatorModel: String, CaseIterable {
     // 4つの計算パターン
-    case addition
-    case subtraction
-    case multiplication
-    case division
-
-    // 表示させる記号
-    var operationSign: String {
-        switch self {
-        case .addition:
-            return "+"
-        case .subtraction:
-            return "-"
-        case .multiplication:
-            return "×"
-        case .division:
-            return "÷"
-        }
-    }
+    case addition = "+"
+    case subtraction = "-"
+    case multiplication = "×"
+    case division = "÷"
 
     mutating func randomOperator() {
         // 起動画面
