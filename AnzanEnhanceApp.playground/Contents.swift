@@ -245,3 +245,12 @@ kekka.append(" secondNumber")
 kekka.append(" =")
 kekka.append(" newInputNumber")
 print(kekka)
+
+func score(mike: Int, bob: Int, mary: Int) -> (total: Int, average: Double) {
+    let total = mike + bob + mary
+    let average = Double(total) / 3
+    return (total, average)
+}
+let rrr = score(mike: 88, bob: 90, mary: 95)
+print(rrr.total)
+print(rrr.average)
