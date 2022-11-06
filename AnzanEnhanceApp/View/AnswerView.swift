@@ -20,8 +20,12 @@ struct AnswerView: View {
     private let soundPlayer = SoundPlayer()
 
     var body: some View {
+        let aaa = operatorModel.operation(firstNumber: firstNumber,
+                                          secondNumber: secondNumber,
+                                          inputNumber: inputNumber)
         let newInputNumber = floor(inputNumber * 100) / 100
-        let newResult = floor(result * 100) / 100
+        let newResult = floor(aaa.aaa * 100) / 100
+
         ZStack {
             BackgoundView(imageName: "bunbougu_kokuban")
             VStack {
@@ -36,9 +40,11 @@ struct AnswerView: View {
             }// VStack
         }// ZStack
         .onAppear(perform: {
-            result = operatorModel.operation(firstNumber: firstNumber, secondNumber: secondNumber)
+            let result = operatorModel.operation(firstNumber: firstNumber,
+                                                 secondNumber: secondNumber,
+                                                 inputNumber: inputNumber)
             // 正解or不正解
-            if operatorModel.checkAnswer(value: result, inputNumber: inputNumber) == true {
+            if aaa.kekka == true {
                 judgment = "正解"
                 soundPlayer.correctPlay()
             } else {

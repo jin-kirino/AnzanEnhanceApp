@@ -62,7 +62,7 @@ struct ContentView: View {
                         operatorModel.randomOperator()
                     }// if
                 }// onChange
-                .onAppear()
+//                .onAppear()
             }// VStack
         }// ZStack
     }// body

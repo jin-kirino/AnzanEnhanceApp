@@ -30,28 +30,27 @@ enum OperatorModel: String, CaseIterable {
         self = newOparator
     }// randomOperator()
 
-    func operation(firstNumber: Int, secondNumber: Int) -> Double {
+    // 四則演算の計算結果、正誤チェク
+    func operation(firstNumber: Int, secondNumber: Int, inputNumber: Double) -> (aaa: Double, kekka: Bool) {
         var value: Double = 0.0
+        var kekka: Bool
         switch self {
         case .addition:
-            return Double(firstNumber) + Double(secondNumber)
+            value = Double(firstNumber) + Double(secondNumber)
         case .subtraction:
-            return Double(firstNumber) - Double(secondNumber)
+            value = Double(firstNumber) - Double(secondNumber)
         case .multiplication:
-            return Double(firstNumber) * Double(secondNumber)
+            value = Double(firstNumber) * Double(secondNumber)
         case .division:
             value = Double(firstNumber) / Double(secondNumber)
             print("value:\(floor(value * 100) / 100)")
-            return floor(value * 100) / 100
+            value = floor(value * 100) / 100
         }
-    }// operation
-    // 正誤チェック機能
-    // ①計算結果、②入力された値を比較する
-    func checkAnswer(value: Double, inputNumber: Double) -> Bool {
         if value == inputNumber {
-            return true
+            kekka = true
         } else {
-            return false
+            kekka = false
         }
-    }// checkAnswer
+        return (value, kekka)
+    }// operation
 }// OperatorModel
