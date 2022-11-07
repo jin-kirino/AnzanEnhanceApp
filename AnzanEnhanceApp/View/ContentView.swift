@@ -35,7 +35,7 @@ struct ContentView: View {
                     // 数字が入力されていることが確認できたらAnswerViewに画面遷移
                     if Double(inputNumber) != nil {
                         // キャスト後の値を格納
-                        doubleInputNumber = Double(inputNumber)!
+                        doubleInputNumber = Double(inputNumber) ?? 0.0
                         isShowSheet.toggle()
                     } else {
                         showAlert.toggle()
