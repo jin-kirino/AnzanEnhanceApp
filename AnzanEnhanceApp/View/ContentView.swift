@@ -14,12 +14,12 @@ struct ContentView: View {
     @State private var isShowSheet: Bool = false
     @State private var showAlert: Bool = false
     @State private var operatorModel: OperatorModel = .addition
+    @State private var doubleInputNumber: Double = 0.0
 
     var body: some View {
         ZStack {
             BackgoundView(imageName: "bunbougu_kokuban")
             VStack {
-                let doubleNumber = Double(inputNumber)
                 HStack {
                     Spacer()
                     Text("\(firstNumber) \(operatorModel.rawValue) \(secondNumber) =")
@@ -32,7 +32,10 @@ struct ContentView: View {
                 .padding()
                 .background(Color.white.opacity(0.7))
                 Button {
-                    if doubleNumber != nil {
+                    // 数字が入力されていることが確認できたらAnswerViewに画面遷移
+                    if Double(inputNumber) != nil {
+                        // キャスト後の値を格納
+                        doubleInputNumber = Double(inputNumber)!
                         isShowSheet.toggle()
                     } else {
                         showAlert.toggle()
@@ -46,7 +49,7 @@ struct ContentView: View {
                 .sheet(isPresented: $isShowSheet) {
                     AnswerView(firstNumber: firstNumber,
                                secondNumber: secondNumber,
-                               inputNumber: doubleNumber ?? 0.0,
+                               inputNumber: doubleInputNumber,
                                operatorModel: operatorModel)
                 }// sheet
                 .alert("数字を入力してください", isPresented: $showAlert) {
@@ -62,7 +65,6 @@ struct ContentView: View {
                         operatorModel.randomOperator()
                     }// if
                 }// onChange
-//                .onAppear()
             }// VStack
         }// ZStack
     }// body
