@@ -14,7 +14,7 @@ struct ContentView: View {
     @State private var isShowSheet: Bool = false
     @State private var showAlert: Bool = false
     @State private var operatorModel: OperatorModel = .addition
-    @State private var doubleInputNumber: Double = 0.0
+    @State private var stringToDoubleNumber: Double = 0.0
 
     var body: some View {
         ZStack {
@@ -33,10 +33,10 @@ struct ContentView: View {
                 .background(Color.white.opacity(0.7))
                 Button {
                     // 数字が入力されていることが確認できたらAnswerViewに画面遷移
-                    if Double(inputNumber) != nil {
+                    if let unwrappedInputNumber = Double(inputNumber) {
                         // キャスト後の値を格納
-                        doubleInputNumber = Double(inputNumber) ?? 0.0
                         isShowSheet.toggle()
+                        stringToDoubleNumber = unwrappedInputNumber
                     } else {
                         showAlert.toggle()
                     }
@@ -49,7 +49,7 @@ struct ContentView: View {
                 .sheet(isPresented: $isShowSheet) {
                     AnswerView(firstNumber: firstNumber,
                                secondNumber: secondNumber,
-                               inputNumber: doubleInputNumber,
+                               inputNumber: stringToDoubleNumber,
                                operatorModel: operatorModel)
                 }// sheet
                 .alert("数字を入力してください", isPresented: $showAlert) {
