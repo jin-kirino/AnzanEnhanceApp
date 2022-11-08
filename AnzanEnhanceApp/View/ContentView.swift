@@ -14,13 +14,14 @@ struct ContentView: View {
     // 右辺の数字を格納する
     @State private var rightSideNumber: Int = Int.random(in: 1...9)
     // 入力された文字を格納する
-    @State private var inputNumber: String = ""
+    @State private var inputText: String = ""
     // AnswerViewの表示を管理する
-    @State private var isShowSheet: Bool = false
+    @State private var isShowAnswerSheet: Bool = false
     // アラートの表示を管理する
-    @State private var showAlert: Bool = false
-    // 
+    @State private var isShowAlert: Bool = false
+    // OperatorModelをインスタンス化
     @State private var operatorModel: OperatorModel = .addition
+    // inputNumber
     @State private var stringToDoubleNumber: Double = 0.0
 
     var body: some View {
@@ -33,7 +34,7 @@ struct ContentView: View {
                     // 計算式とTextFieldを並べて表示する
                     Text("\(leftSideNumber) \(operatorModel.rawValue) \(rightSideNumber) =")
                         .font(.largeTitle)
-                    TextField("答えは？", text: $inputNumber)
+                    TextField("答えは？", text: $inputText)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .keyboardType(.numberPad)
                 }// HStack
@@ -43,14 +44,14 @@ struct ContentView: View {
                 .background(Color.white.opacity(0.7))
                 Button {
                     // 数字が入力されていることが確認できたらAnswerViewに画面遷移
-                    if let unwrappedInputNumber = Double(inputNumber) {
+                    if let unwrappedInputNumber = Double(inputText) {
                         // AnswerViewを表示する
-                        isShowSheet.toggle()
+                        isShowAnswerSheet.toggle()
                         // キャスト後の値を格納する
                         stringToDoubleNumber = unwrappedInputNumber
                     } else {
                         // アラートを表示する
-                        showAlert.toggle()
+                        isShowAlert.toggle()
                     }
                 } label: {
                     Text("答える")
@@ -59,23 +60,23 @@ struct ContentView: View {
                         // opacity：半透明の色を設定
                         .background(Color.white.opacity(0.7))
                 }// Button
-                .sheet(isPresented: $isShowSheet) {
+                .sheet(isPresented: $isShowAnswerSheet) {
                     // AnswerViewに値を受け渡す
                     AnswerView(leftSideNumber: leftSideNumber,
                                rightSideNumber: rightSideNumber,
                                inputNumber: stringToDoubleNumber,
                                operatorModel: operatorModel)
                 }// sheet
-                .alert("数字を入力してください", isPresented: $showAlert) {
+                .alert("数字を入力してください", isPresented: $isShowAlert) {
                     Button("OK") { return}
                 }// alert
                 // 監視対象: isShowSheet
-                .onChange(of: isShowSheet) { value in
+                .onChange(of: isShowAnswerSheet) { value in
                     // falseのタイミングでランダム＆空欄
                     if value == false {
                         leftSideNumber = Int.random(in: 1...9)
                         rightSideNumber = Int.random(in: 1...9)
-                        inputNumber = ""
+                        inputText = ""
                         operatorModel.randomOperator()
                     }// if
                 }// onChange
