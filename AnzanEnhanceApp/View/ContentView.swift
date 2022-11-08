@@ -8,21 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var firstNumber: Int = Int.random(in: 1...9)
-    @State private var secondNumber: Int = Int.random(in: 1...9)
+
+    // 左辺の数字を格納する
+    @State private var leftSideNumber: Int = Int.random(in: 1...9)
+    // 右辺の数字を格納する
+    @State private var rightSideNumber: Int = Int.random(in: 1...9)
+    // 入力された文字を格納する
     @State private var inputNumber: String = ""
+    // AnswerViewの表示を管理する
     @State private var isShowSheet: Bool = false
+    // アラートの表示を管理する
     @State private var showAlert: Bool = false
+    // 
     @State private var operatorModel: OperatorModel = .addition
     @State private var stringToDoubleNumber: Double = 0.0
 
     var body: some View {
         ZStack {
+            // BackgoundViewにbunbougu_kokubanを指定
             BackgoundView(imageName: "bunbougu_kokuban")
             VStack {
                 HStack {
                     Spacer()
-                    Text("\(firstNumber) \(operatorModel.rawValue) \(secondNumber) =")
+                    // 計算式とTextFieldを並べて表示する
+                    Text("\(leftSideNumber) \(operatorModel.rawValue) \(rightSideNumber) =")
                         .font(.largeTitle)
                     TextField("答えは？", text: $inputNumber)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -30,25 +39,30 @@ struct ContentView: View {
                 }// HStack
                 .frame(width: 230, height: 40)
                 .padding()
+                // opacity：半透明の色を設定
                 .background(Color.white.opacity(0.7))
                 Button {
                     // 数字が入力されていることが確認できたらAnswerViewに画面遷移
                     if let unwrappedInputNumber = Double(inputNumber) {
-                        // キャスト後の値を格納
+                        // AnswerViewを表示する
                         isShowSheet.toggle()
+                        // キャスト後の値を格納する
                         stringToDoubleNumber = unwrappedInputNumber
                     } else {
+                        // アラートを表示する
                         showAlert.toggle()
                     }
                 } label: {
                     Text("答える")
                         .font(.largeTitle)
                         .padding()
+                        // opacity：半透明の色を設定
                         .background(Color.white.opacity(0.7))
                 }// Button
                 .sheet(isPresented: $isShowSheet) {
-                    AnswerView(firstNumber: firstNumber,
-                               secondNumber: secondNumber,
+                    // AnswerViewに値を受け渡す
+                    AnswerView(leftSideNumber: leftSideNumber,
+                               rightSideNumber: rightSideNumber,
                                inputNumber: stringToDoubleNumber,
                                operatorModel: operatorModel)
                 }// sheet
@@ -59,8 +73,8 @@ struct ContentView: View {
                 .onChange(of: isShowSheet) { value in
                     // falseのタイミングでランダム＆空欄
                     if value == false {
-                        firstNumber = Int.random(in: 1...9)
-                        secondNumber = Int.random(in: 1...9)
+                        leftSideNumber = Int.random(in: 1...9)
+                        rightSideNumber = Int.random(in: 1...9)
                         inputNumber = ""
                         operatorModel.randomOperator()
                     }// if
