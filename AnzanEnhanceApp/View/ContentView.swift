@@ -80,6 +80,10 @@ struct ContentView: View {
                         operatorModel.randomOperator()
                     }// if
                 }// onChange
+                .onAppear {
+                    operatorModel.randomOperator()
+                    print("記号の種類\(operatorModel.rawValue)")
+                }
             }// VStack
         }// ZStack
     }// body
