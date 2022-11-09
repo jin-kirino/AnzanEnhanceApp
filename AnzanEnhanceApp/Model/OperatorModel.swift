@@ -11,6 +11,7 @@ import SwiftUI
 // CaseIterableプロトコル：全ての値を配列で取得する
 enum OperatorModel: String, CaseIterable {
     // 4つの計算パターン
+    case start = ""
     case addition = "+"
     case subtraction = "-"
     case multiplication = "×"
@@ -19,15 +20,16 @@ enum OperatorModel: String, CaseIterable {
     // mutating：OperatorModel自身の値を変更する
     mutating func randomOperator() {
         // 算出された演算子を格納する変数
-        var newOparator: OperatorModel = .addition
+        var newOparator: OperatorModel
         // 演算子の種類を配列に格納
         let oparatorPattern: [OperatorModel] = OperatorModel.allCases
 
         repeat {
             // ランダムに抽出
             newOparator = oparatorPattern.randomElement()!
-            // 前回と同じなら再度ランダム
-        } while self == newOparator
+            print(newOparator)
+            // 前回と同じ&.startだったら再度ランダム
+        } while self == newOparator || newOparator == .start
         // 違うならselfに返す
         self = newOparator
     }// randomOperator()
@@ -38,6 +40,8 @@ enum OperatorModel: String, CaseIterable {
         var check: Bool
         // 条件分岐で演算を行い、演算結果をresultに格納
         switch self {
+        case .start:
+            result = 0.0
         case .addition:
             result = Double(leftSideNumber) + Double(rightSideNumber)
         case .subtraction:

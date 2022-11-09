@@ -20,8 +20,8 @@ struct ContentView: View {
     // アラートの表示を管理する
     @State private var isShowAlert: Bool = false
     // OperatorModelをインスタンス化
-    @State private var operatorModel: OperatorModel = .addition
-    // inputNumber
+    @State var operatorModel: OperatorModel = .start
+    // inputNumberをDoluble型にキャストした後の数字を格納する
     @State private var stringToDoubleNumber: Double = 0.0
 
     var body: some View {
@@ -45,7 +45,7 @@ struct ContentView: View {
                 Button {
                     // 数字が入力されていることが確認できたらAnswerViewに画面遷移
                     if let unwrappedInputNumber = Double(inputText) {
-                        // AnswerViewを表示する
+                        // AnswerViewを表示す
                         isShowAnswerSheet.toggle()
                         // キャスト後の値を格納する
                         stringToDoubleNumber = unwrappedInputNumber
@@ -80,6 +80,7 @@ struct ContentView: View {
                         operatorModel.randomOperator()
                     }// if
                 }// onChange
+                // アプリ起動時にランダムで四則演算を生成する
                 .onAppear {
                     operatorModel.randomOperator()
                     print("記号の種類\(operatorModel.rawValue)")
