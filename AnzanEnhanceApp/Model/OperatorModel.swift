@@ -27,7 +27,7 @@ enum OperatorModel: String, CaseIterable {
         repeat {
             // ランダムに抽出
             newOparator = oparatorPattern.randomElement()!
-            print(newOparator)
+            print("ランダム→\(newOparator)")
             // 前回と同じ&.startだったら再度ランダム
         } while self == newOparator || newOparator == .start
         // 違うならselfに返す

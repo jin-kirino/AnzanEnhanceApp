@@ -14,9 +14,9 @@ struct AnswerView: View {
     let inputNumber: Double
     let operatorModel: OperatorModel
     // 四則演算の計算結果を格納
-    @State private var result: Double = 0.0
+    @State private var calculationResult: Double = 0.0
     // 「正解」or「不正解」を格納
-    @State private var judgment: String = ""
+    @State private var judgmentResult: String = ""
     // 画面の黒板に表示させる文字列
     @State private var basicArithmeticOperations: String = ""
     // SoundPlayerインスタンス化
@@ -35,7 +35,7 @@ struct AnswerView: View {
                 Text("""
                     \(basicArithmeticOperations)
                     答えは\(String(format: "%.2f", newResult))
-                    \(judgment)
+                    \(judgmentResult)
                 """)
                 .font(.largeTitle)
                 .foregroundColor(.white)
@@ -48,10 +48,10 @@ struct AnswerView: View {
                                                  inputNumber: inputNumber)
             // 正解or不正解
             if result.check == true {
-                judgment = "正解"
+                judgmentResult = "正解"
                 soundPlayer.correctPlay()
             } else {
-                judgment = "不正解"
+                judgmentResult = "不正解"
                 soundPlayer.incorrectPlay()
             }// if-else
             print("result:\(result)")

@@ -20,9 +20,9 @@ struct ContentView: View {
     // アラートの表示を管理する
     @State private var isShowAlert: Bool = false
     // OperatorModelをインスタンス化
-    @State var operatorModel: OperatorModel = .start
+    @State var calculation: OperatorModel = .start
     // inputNumberをDoluble型にキャストした後の数字を格納する
-    @State private var stringToDoubleNumber: Double = 0.0
+    @State private var inputDoubleNumber: Double = 0.0
 
     var body: some View {
         ZStack {
@@ -32,7 +32,7 @@ struct ContentView: View {
                 HStack {
                     Spacer()
                     // 計算式とTextFieldを並べて表示する
-                    Text("\(leftSideNumber) \(operatorModel.rawValue) \(rightSideNumber) =")
+                    Text("\(leftSideNumber) \(calculation.rawValue) \(rightSideNumber) =")
                         .font(.largeTitle)
                     TextField("答えは？", text: $inputText)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -48,7 +48,7 @@ struct ContentView: View {
                         // AnswerViewを表示す
                         isShowAnswerSheet.toggle()
                         // キャスト後の値を格納する
-                        stringToDoubleNumber = unwrappedInputNumber
+                        inputDoubleNumber = unwrappedInputNumber
                     } else {
                         // アラートを表示する
                         isShowAlert.toggle()
@@ -64,8 +64,8 @@ struct ContentView: View {
                     // AnswerViewに値を受け渡す
                     AnswerView(leftSideNumber: leftSideNumber,
                                rightSideNumber: rightSideNumber,
-                               inputNumber: stringToDoubleNumber,
-                               operatorModel: operatorModel)
+                               inputNumber: inputDoubleNumber,
+                               operatorModel: calculation)
                 }// sheet
                 .alert("数字を入力してください", isPresented: $isShowAlert) {
                     Button("OK") { return}
@@ -77,13 +77,13 @@ struct ContentView: View {
                         leftSideNumber = Int.random(in: 1...9)
                         rightSideNumber = Int.random(in: 1...9)
                         inputText = ""
-                        operatorModel.randomOperator()
+                        calculation.randomOperator()
                     }// if
                 }// onChange
                 // アプリ起動時にランダムで四則演算を生成する
                 .onAppear {
-                    operatorModel.randomOperator()
-                    print("記号の種類\(operatorModel.rawValue)")
+                    calculation.randomOperator()
+                    print("記号の種類\(calculation.rawValue)")
                 }
             }// VStack
         }// ZStack
