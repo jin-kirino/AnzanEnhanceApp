@@ -11,8 +11,8 @@ struct AnswerView: View {
     // 外部から値を設定する
     let leftSideNumber: Int
     let rightSideNumber: Int
-    let inputNumber: Double
-    let operatorModel: OperatorModel
+    let inputDoubleNumber: Double
+    let calculation: OperatorModel
     // 四則演算の計算結果を格納
     @State private var calculationResult: Double = 0.0
     // 「正解」or「不正解」を格納
@@ -23,18 +23,12 @@ struct AnswerView: View {
     private let soundPlayer = SoundPlayer()
 
     var body: some View {
-        let result = operatorModel.calculation(leftSideNumber: leftSideNumber,
-                                          rightSideNumber: rightSideNumber,
-                                          inputNumber: inputNumber)
-        let newInputNumber = floor(inputNumber * 100) / 100
-        let newResult = floor(result.result * 100) / 100
-
         ZStack {
             BackgoundView(imageName: "bunbougu_kokuban")
             VStack {
                 Text("""
                     \(basicArithmeticOperations)
-                    答えは\(String(format: "%.2f", newResult))
+                    答えは\(String(format: "%.2f", inputDoubleNumber))
                     \(judgmentResult)
                 """)
                 .font(.largeTitle)
@@ -43,27 +37,28 @@ struct AnswerView: View {
             }// VStack
         }// ZStack
         .onAppear(perform: {
-            let result = operatorModel.calculation(leftSideNumber: leftSideNumber,
+            let returnValue = calculation.calculationResultCheck(leftSideNumber: leftSideNumber,
                                                  rightSideNumber: rightSideNumber,
-                                                 inputNumber: inputNumber)
+                                                 inputNumber: inputDoubleNumber)
+            calculationResult = floor(returnValue.result * 100) / 100
             // 正解or不正解
-            if result.check == true {
+            if returnValue.check == true {
                 judgmentResult = "正解"
                 soundPlayer.correctPlay()
             } else {
                 judgmentResult = "不正解"
                 soundPlayer.incorrectPlay()
             }// if-else
-            print("result:\(result)")
-            print("inputNumber:\(inputNumber)")
-            basicArithmeticOperations = "\(leftSideNumber) \(operatorModel.rawValue)"
-            basicArithmeticOperations.append(" \(rightSideNumber) = \(String(format: "%.2f", newInputNumber))")
+            print("result:\(returnValue)")
+            print("inputNumber:\(inputDoubleNumber)")
+            basicArithmeticOperations = "\(leftSideNumber) \(calculation.rawValue)"
+            basicArithmeticOperations.append(" \(rightSideNumber) = \(String(format: "%.2f", inputDoubleNumber))")
         })// onAppear
     }// body
 }// ContentView
 
 struct AnswerView_Previews: PreviewProvider {
     static var previews: some View {
-        AnswerView(leftSideNumber: 0, rightSideNumber: 0, inputNumber: 0.0, operatorModel: .addition)
+        AnswerView(leftSideNumber: 0, rightSideNumber: 0, inputDoubleNumber: 0.0, calculation: .addition)
     }
 }

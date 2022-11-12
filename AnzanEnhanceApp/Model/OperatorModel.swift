@@ -35,7 +35,8 @@ enum OperatorModel: String, CaseIterable {
     }// randomOperator()
 
     // 四則演算の計算結果、正誤チェク
-    func calculation(leftSideNumber: Int, rightSideNumber: Int, inputNumber: Double) -> (result: Double, check: Bool) {
+    func calculationResultCheck(leftSideNumber: Int, rightSideNumber: Int, inputNumber: Double) ->
+    (result: Double, check: Bool) {
         var result: Double = 0.0
         var check: Bool
         // 条件分岐で演算を行い、演算結果をresultに格納

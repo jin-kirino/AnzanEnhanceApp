@@ -21,7 +21,7 @@ struct ContentView: View {
     @State private var isShowAlert: Bool = false
     // OperatorModelをインスタンス化
     @State var calculation: OperatorModel = .start
-    // inputNumberをDoluble型にキャストした後の数字を格納する
+    // inputTextをDoluble型にキャストした後の数字を格納する
     @State private var inputDoubleNumber: Double = 0.0
 
     var body: some View {
@@ -45,10 +45,14 @@ struct ContentView: View {
                 Button {
                     // 数字が入力されていることが確認できたらAnswerViewに画面遷移
                     if let unwrappedInputNumber = Double(inputText) {
+                        print("入力値：\(inputText)")
+                        print("アンラップ後：\(unwrappedInputNumber)")
                         // AnswerViewを表示す
                         isShowAnswerSheet.toggle()
-                        // キャスト後の値を格納する
-                        inputDoubleNumber = unwrappedInputNumber
+                        // 小数点第２位までの数字を格納する（小数点第１位で割り切れたらそこまで）
+                        inputDoubleNumber = floor(unwrappedInputNumber * 100) / 100
+                        print("小数点第２位：\(inputDoubleNumber)")
+
                     } else {
                         // アラートを表示する
                         isShowAlert.toggle()
@@ -64,13 +68,13 @@ struct ContentView: View {
                     // AnswerViewに値を受け渡す
                     AnswerView(leftSideNumber: leftSideNumber,
                                rightSideNumber: rightSideNumber,
-                               inputNumber: inputDoubleNumber,
-                               operatorModel: calculation)
+                               inputDoubleNumber: inputDoubleNumber,
+                               calculation: calculation)
                 }// sheet
                 .alert("数字を入力してください", isPresented: $isShowAlert) {
                     Button("OK") { return}
                 }// alert
-                // 監視対象: isShowSheet
+                // 監視対象: isShowSheetがfalseのタイミング（閉じた時）に新しい計算を表示させる
                 .onChange(of: isShowAnswerSheet) { value in
                     // falseのタイミングでランダム＆空欄
                     if value == false {
