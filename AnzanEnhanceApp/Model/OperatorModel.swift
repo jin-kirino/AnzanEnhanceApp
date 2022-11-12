@@ -51,10 +51,11 @@ enum OperatorModel: String, CaseIterable {
             result = Double(leftSideNumber) * Double(rightSideNumber)
         case .division:
             result = Double(leftSideNumber) / Double(rightSideNumber)
+            print("割り算無限：\(result)")
             // floor:切り捨て
             // 小数点第２位まで表示させるから(result * 100) / 100)
-            print("result:\(floor(result * 100) / 100)")
             result = floor(result * 100) / 100
+            print("メソッド内の計算結果:\(result)")
         }
         // swichの結果と入力値を比較してBool
         if result == inputNumber {

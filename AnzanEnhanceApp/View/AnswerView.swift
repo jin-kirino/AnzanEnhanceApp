@@ -28,7 +28,7 @@ struct AnswerView: View {
             VStack {
                 Text("""
                     \(basicArithmeticOperations)
-                    答えは\(String(format: "%.2f", inputDoubleNumber))
+                    答えは\(String(format: "%.2f", calculationResult))
                     \(judgmentResult)
                 """)
                 .font(.largeTitle)
@@ -49,8 +49,7 @@ struct AnswerView: View {
                 judgmentResult = "不正解"
                 soundPlayer.incorrectPlay()
             }// if-else
-            print("result:\(returnValue)")
-            print("inputNumber:\(inputDoubleNumber)")
+            print("メソッドの戻り値:\(returnValue)")
             basicArithmeticOperations = "\(leftSideNumber) \(calculation.rawValue)"
             basicArithmeticOperations.append(" \(rightSideNumber) = \(String(format: "%.2f", inputDoubleNumber))")
         })// onAppear
